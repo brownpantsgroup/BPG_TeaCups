@@ -1,30 +1,1827 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Company Name</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacup Emporium | Premium Teacups & Tea Accessories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2C5530;
+            --primary-light: #4A7856;
+            --secondary: #D4B896;
+            --accent: #8B4513;
+            --light: #F8F5F2;
+            --dark: #2C2C2C;
+            --text: #333333;
+            --gray: #7A7A7A;
+            --white: #FFFFFF;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            padding: 1.2rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .nav-icon {
+            font-size: 1.3rem;
+            color: var(--dark);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-icon:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 85, 48, 0.85) 0%, rgba(74, 120, 86, 0.8) 100%), url('https://images.unsplash.com/photo-1571934811356-5cc061b6821f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 1rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 1rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+		
+	
+		
+		.product-card2 {
+            background-color: var(--white);
+            
+            overflow: hidden;
+            box-shadow: var(--white);
+            transition: var(--white);
+            position: relative;
+			margin-left:2rem
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            padding: 1.8rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.2rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--accent);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Product Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 2% auto;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: modalFadeIn 0.4s;
+            overflow: hidden;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #eee;
+            background-color: var(--light);
+        }
+
+        .modal-header h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .close-modal {
+            font-size: 1.8rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            background: none;
+            border: none;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .modal-images {
+            padding: 2rem;
+            background-color: var(--light);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border-radius: 6px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            opacity: 1;
+            border-color: var(--primary);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-details {
+            padding: 1rem;
+        }
+
+        .modal-price {
+            font-size: 1.6rem;
+            color: var(--accent);
+            font-weight: 300;
+            margin-bottom: 0.4rem;
+        }
+
+        .modal-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .product-specs {
+            margin-bottom: 2rem;
+        }
+
+        .product-specs h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .specs-list {
+            list-style: none;
+        }
+
+        .specs-list li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+        }
+
+        .specs-list li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            width: 120px;
+            color: var(--dark);
+        }
+
+        .spec-value {
+            color: var(--gray);
+            flex: 1;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--white);
+            padding: 1rem 0;
+            margin-top: 1rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-info p {
+            margin-bottom: 1.8rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            margin-top: 2.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-item i {
+            background-color: var(--secondary);
+            color: var(--dark);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1.2rem;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+
+        .contact-item-content p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+
+        .contact-form {
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 85, 48, 0.1);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .form-status {
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+            display: none;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+            display: block;
+        }
+
+        .form-status.error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ffcdd2;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 1.2rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 0 1.2rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--primary-light);
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-container {
+                gap: 3rem;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1.2rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 0;
+            }
+
+            .nav-actions {
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+            }
+            
+            .modal-header, .modal-images, .modal-details {
+                padding: 1.5rem;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Brown Pants Group</h1>
-    <nav>
-      <a href="about.html">About</a>
-      <a href="products.html">Products</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-mug-hot"></i>
+                    <h1>Teacup <span>Emporium</span></h1>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+               
+            </div>
+        </div>
+    </header>
 
-  <main>
-    <section>
-      <h2>Welcome</h2>
-      <p>We specialize in [your product/service]. Explore our catalog and get in touch!</p>
+    <!-- Hero Section 
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Elegant Teacups for Discerning Tastes</h2>
+                <p>Discover our curated collection of premium teacups, handcrafted to enhance your tea experience with beauty and functionality.</p>
+                <a href="#products" class="btn">Explore Collections</a>
+            </div>
+        </div>
     </section>
-  </main>
+    -->
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+               
+            </div>
+            <!-- <p class="section-subtitle">Each piece in our collection is carefully selected for its craftsmanship, design, and ability to elevate your tea ritual.</p> -->
+            <div class="products-grid">
+			 <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>Whispering Porcelain</h3>
+                        <p>A quiet elegance steeped in tradition. This teacup captures the hush of early mornings and the warmth of whispered conversations. Crafted for those who savor serenity in every sip.</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$44.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="1">View Details</button>
+                        </div>
+                    </div>
+                </div>
+				
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/111.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>Chai Muse</h3>
+                        <p>Inspired by the soulful rhythm of Indian tea rituals, this cup invites you to pause, reflect, and indulge. Its gentle curves echo the comfort of home and the poetry of flavor.</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$39.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="2">View Details</button>
+                        </div>
+                    </div>
+                </div>
 
-  <footer>
-    <p>&copy; 2025 Your Company Name</p>
-  </footer>
+		     
+
+	 <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/allGif.gif?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>Heritage-Inspired</h3>
+                        <p>Rooted in the grace of traditional pottery and the finesse of modern design, this is like a tribute to craftsmanship. Each cup carries the whisper of artisans past, echoing stories steeped in clay and care.</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$34.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="3">View Details</button>
+                        </div>
+                    </div>
+                </div>
+               
+                <!-- Product 4 -->
+               <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/allWhiteGifff.gif?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>White Ember</h3>
+                        <p>Crafted for visual harmony, White Ember blends matte textures with fluid form. It’s a study in contrast—cool to the touch, warm at heart. Ideal for curated shelves, moody flatlays, and quiet rituals</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$29.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="4">View Details</button>
+                        </div>
+                    </div>
+                </div>
+				
+			<!-- Product 5 -->
+			<div class="product-card">                
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/T1Main.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>Twin Mugs</h3>
+                        <p>Crafted for visual harmony, White Ember blends matte textures with fluid form. It’s a study in contrast—cool to the touch, warm at heart. Ideal for curated shelves, moody flatlays, and quiet rituals</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$14.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="5">View Details</button>
+                        </div>
+                    </div>
+                </div>
+             
+			<!-- Product 6 -->
+			<div class="product-card">                 
+                    <div class="product-img">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/V1Main.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                    </div>
+                    <div class="product-info">
+                        <h3>Twin Mugs</h3>
+                        <p>Crafted for visual harmony, White Ember blends matte textures with fluid form. It’s a study in contrast—cool to the touch, warm at heart. Ideal for curated shelves, moody flatlays, and quiet rituals</p>
+                        <div class="product-price">
+                            <div>
+                                
+                                <span class="price">$14.99</span>
+                            </div>
+                            <button class="btn btn-outline view-details" data-product="6">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modals -->
+    <!-- Modal for Product 1 -->
+    
+	
+	<div id="modal-1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Every sip has a story. Whisper it in porcelain</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain" id="main-img-2">
+                    </div>
+                    <div class="image-thumbnails">
+						
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain" >
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain" >
+                        </div>
+						<div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/3.png?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/3.png?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain" >
+                        </div>
+						<div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/allGif.gif?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e653/3.png?raw=true style="max-width:100%; height: 50%;" alt="Whispering Porcelain" >
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price">
+                        $44.99
+                    </div>
+                    <div class="product-specs">            
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">6 Cup + 6 Saucer</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">140ml / 5oz (Apx)</span>
+                            </li>  
+							<li>
+                                <span class="spec-label">Size:</span>
+                                <span class="spec-value">13.5 x 13.5 x 6.5 Cm (Apx)</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+        
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20Whisper%20Porclein" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="modal-2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chai Muse</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/111.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse" id="main-img-2">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/114.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/114.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/109.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/109.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/112.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/112.jpg?raw=true style="max-width:100%; height: 50%;"alt="Chai Muse">
+
+                        </div>
+						<div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/116.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/116.jpg?raw=true style="max-width:100%; height: 50%;"  alt="Chai Muse">
+                        </div>
+						<div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/117.png?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e46/117.png?raw=true style="max-width:100%; height: 50%;"  alt="Chai Muse">
+
+                        </div>
+
+                    </div>
+                </div>
+				 
+                <div class="modal-details">
+                    <div class="modal-price">
+                        $39.99
+                    </div>                
+                    <div class="product-specs">
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">6 Cup + 6 Saucer</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">140ml / 5oz (Apx)</span>
+                            </li>  
+							<li>
+                                <span class="spec-label">Size:</span>
+                                <span class="spec-value">13.5 x 13.5 x 6.5 Cm (Apx)</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+    
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20Chai%20Muse" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="modal-3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Heritage-Inspired</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse" id="main-img-2">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/3.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/ebony-e661/3.jpg?raw=true style="max-width:100%; height: 50%;"alt="Chai Muse">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price">
+                        $34.99
+                    </div>                   
+                    <div class="product-specs">                        
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">6 Cup + 6 Saucer</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">140ml / 5oz (Apx)</span>
+                            </li>  
+							<li>
+                                <span class="spec-label">Size:</span>
+                                <span class="spec-value">13.5 x 13.5 x 6.5 Cm (Apx)</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+    
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20Chai%20Muse" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="modal-4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Minimal, warm, and glowing</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/allWhiteGifff.gif?raw=true style="max-width:100%; height: 50%;" alt="White Ember" id="main-img-3">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW1.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW1.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW2.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW2.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                        </div>
+						 <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW3.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW3.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                        </div>			
+						 <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW4.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW4.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                        </div>
+						 <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW5.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/allWhites/AW5.jpg?raw=true style="max-width:100%; height: 50%;" alt="White Ember">
+                        </div>
+                       
+						
+
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price">
+                         $29.99
+                    </div>               
+                    <div class="product-specs">
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">6 Cup + 6 Saucer</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">140ml / 5oz (Apx)</span>
+                            </li>  
+							<li>
+                                <span class="spec-label">Size:</span>
+                                <span class="spec-value">13.5 x 13.5 x 6.5 Cm (Apx)</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+        
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20White%20Ember" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="modal-5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Twin Mugs</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/allGifT1.gif?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse" id="main-img-2">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/T1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/T1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/T2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/T2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+						<div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/allGifT1.gif?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/allGifT1.gif?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                       
+
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price">
+                        $14.99
+                    </div>             
+                    <div class="product-specs">
+                       <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">Set of 2 Cups</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">370ml / 13oz (Apx)</span>
+                            </li>  				
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+    
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20Chai%20Muse" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div id="modal-6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Twin Mugs</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+               <div class="modal-images">
+                    <div class="main-image">
+                        <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/allGifV1.gif?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse" id="main-img-2">
+                    </div>
+                    <div class="image-thumbnails">
+                        <div class="thumbnail active" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/V1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/V1.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                        <div class="thumbnail" data-image="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/V2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Classic Porcelain Teacup">
+                            <img src="https://github.com/tandonkunal9/BPG-Github/blob/BPG_V1/assets/images/twinMugs/V2.jpg?raw=true style="max-width:100%; height: 50%;" alt="Chai Muse">
+                        </div>
+                      
+
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-price">
+                        $14.99
+                    </div>
+                    <p class="modal-description">
+                        Inspired by the rhythm of roadside chais and the grace of handcrafted pottery, Chai Muse celebrates the soul of Indian tea culture. It’s a nod to Gwalior’s warmth, Indore’s flair, and the timeless joy of a shared sip.
+                    </p>
+                    <div class="product-specs">
+                        <ul class="specs-list">
+                            <li>
+                                <span class="spec-label">Material:</span>
+                                <span class="spec-value">Premium Ceramic</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Origin:</span>
+                                <span class="spec-value">Handmade by skilled artisans in Jaipur from India</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Gift-Ready:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+							<li>
+                                <span class="spec-label">Daily Use:</span>
+                                <span class="spec-value">Yes</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Content:</span>
+                                <span class="spec-value">Set of 2 Cups</span>
+                            </li>
+                            <li>
+                                <span class="spec-label">Volume:</span>
+                                <span class="spec-value">370ml / 13oz (Apx)</span>
+                            </li>  				
+							<li>
+                                <span class="spec-label">Care <br/> Instruction:</span>
+                                <span class="spec-value">Handwash with mild soap , Not recommended for Dishwasher </span>
+                            </li> 							                         
+                            <li>
+                                <span class="spec-label">Microwave <br/> Safe:</span>
+                                <span class="spec-value">No</span>
+                            </li>						
+                        </ul>
+                    </div>
+                    <div class="modal-actions">
+    
+                        <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I'm%20interested%20in%20the%20Classic%20Porcelain%20Teacup%20-%20Chai%20Muse" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Inquire on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+	
+	
+	
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have questions about our teacups or need assistance with your order? Our tea specialists are here to help you find the perfect addition to your collection.</p>
+                    
+                    <div class="contact-details">
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-item-content">
+                                <h4>Phone Number</h4>
+                                <p>+1 (704) 954-4650</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-item-content">
+                                <h4>Email Address</h4>
+                                <p>brownpantsgroup@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-item-content">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div id="formStatus" class="form-status"></div>
+                        
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="" disabled selected>Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="product">Product Question</option>
+                                <option value="order">Order Issue</option>
+                                <option value="wholesale">Wholesale Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your teacup needs..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5512259344?text=Hi%20Teacup%20Emporium,%20I%20would%20like%20to%20know%20more%20about%20your%20products" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Teacup Emporium</h3>
+                    <p>Your premier destination for exquisite teacups and tea accessories. We're passionate about bringing beauty and craftsmanship to your tea moments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Collections</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on new collections and special offers.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Teacup Emporium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu after clicking a link
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('submitBtn');
+
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Change button text to indicate processing
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    formStatus.textContent = 'Thank you for your message! We will get back to you soon.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Oops! There was a problem sending your message. Please try again or contact us directly.';
+                formStatus.className = 'form-status error';
+            } finally {
+                submitBtn.innerHTML = 'Send Message';
+                submitBtn.disabled = false;
+                
+                // Scroll to form status message
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+
+        // Form validation
+        const inputs = contactForm.querySelectorAll('input, textarea, select');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (!this.checkValidity()) {
+                    this.style.borderColor = '#ffcdd2';
+                } else {
+                    this.style.borderColor = '#e0e0e0';
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0.8rem 0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '1.2rem 0';
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // Product Modal Functionality
+        document.querySelectorAll('.view-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product');
+                const modal = document.getElementById(`modal-${productId}`);
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        // Close modal functionality
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Image thumbnail functionality
+        document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const mainImage = this.closest('.modal-images').querySelector('.main-image img');
+                const imageUrl = this.getAttribute('data-image');
+                
+                // Update main image
+                mainImage.src = imageUrl;
+                
+                // Update active thumbnail
+                this.closest('.image-thumbnails').querySelectorAll('.thumbnail').forEach(t => {
+                    t.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
 </body>
 </html>
